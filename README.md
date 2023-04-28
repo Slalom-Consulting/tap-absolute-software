@@ -1,12 +1,8 @@
 # tap-absolute-software
 
-`tap-absolute-software` is a Singer tap for AbsoluteSoftware.
+`tap-absolute-software` is a Singer tap for the [Absolute Software API](https://api.absolute.com/api-doc/doc.html).
 
-Built with the [Meltano Tap SDK](https://sdk.meltano.com) for Singer Taps.
-
-<!--
-
-Developer TODO: Update the below as needed to correctly describe the install procedure. For instance, if you do not have a PyPi repo, or if you want users to directly install from your git repo, you can modify this step as appropriate.
+Built with the [Meltano Tap SDK](https://sdk.meltano.com) for Singer Taps and the [Absolute Software API Reference](https://api.absolute.com/api-doc/doc.html)
 
 ## Installation
 
@@ -19,10 +15,8 @@ pipx install tap-absolute-software
 Install from GitHub:
 
 ```bash
-pipx install git+https://github.com/ORG_NAME/tap-absolute-software.git@main
+pipx install git+https://github.com/SlalomConsulting/tap-absolute-software.git@main
 ```
-
--->
 
 ## Configuration
 
@@ -38,6 +32,13 @@ tap-absolute-software --about --format=markdown
 ```
 -->
 
+| Setting             | Required | Default | Description |
+|:--------------------|:--------:|:-------:|:------------|
+| token_id              | True     | None    | The token ID created in your Absolute API app.  |
+| token_secret           | True     | None    | The token secret created in your Absolute API app. |
+| auth_url       | True     | https://api.absolute.com/jws/validate    | The url for the authorization. This is changeable depending on country where your Absolute admin portal is accessed from. Please see  the Accessing the API section on the [Absolute Software API Reference](https://api.absolute.com/api-doc/doc.html) |
+| endpoint       | True    | /v3/reporting    | Configurable depending on streams to be accessed. The v3/reporting endpoint is the uri accessed by default for the two stream. configured in this tap. There are other streams at different endpoints as well. Adding the other endpoints will require updating of this tap. |
+
 A full list of supported settings and capabilities for this
 tap is available by running:
 
@@ -51,7 +52,11 @@ This Singer tap will automatically import any environment variables within the w
 `.env` if the `--config=ENV` is provided, such that config values will be considered if a matching
 environment variable is set either in the terminal context or in the `.env` file.
 
-### Source Authentication and Authorization
+### Custom Query String Configuration
+
+This API also intakes different types of options to be appended to the query string alongside the pagination token that is located in the headers. 
+
+For information on sorting, simple filtering, advanced filtering, selecting, and additional parameters in the query string for pagination, please see this [documentation link](https://api.absolute.com/api-doc/doc.html#section/Introduction/Sorting) from the Absolute Software API documentation. 
 
 <!--
 Developer TODO: If your tap requires special access on the source system, or any special authentication requirements, provide those here.
@@ -100,12 +105,6 @@ poetry run tap-absolute-software --help
 _**Note:** This tap will work in any Singer environment and does not require Meltano.
 Examples here are for convenience and to streamline end-to-end orchestration scenarios._
 
-<!--
-Developer TODO:
-Your project comes with a custom `meltano.yml` project file already created. Open the `meltano.yml` and follow any "TODO" items listed in
-the file.
--->
-
 Next, install Meltano (if you haven't already) and any needed plugins:
 
 ```bash
@@ -129,4 +128,3 @@ meltano elt tap-absolute-software target-jsonl
 
 See the [dev guide](https://sdk.meltano.com/en/latest/dev_guide.html) for more instructions on how to use the SDK to
 develop your own taps and targets.
-# tap-absolute-software
