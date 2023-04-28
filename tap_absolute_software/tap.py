@@ -4,8 +4,6 @@ from __future__ import annotations
 
 from singer_sdk import Tap
 from singer_sdk import typing as th  # JSON schema typing helpers
-
-# TODO: Import your custom stream types here:
 from tap_absolute_software import streams
 
 
@@ -14,31 +12,32 @@ class TapAbsoluteSoftware(Tap):
 
     name = "tap-absolute-software"
 
-    # TODO: Update this section with the actual config values you expect:
     config_jsonschema = th.PropertiesList(
         th.Property(
-            "auth_token",
+            "token_id",
             th.StringType,
             required=True,
             secret=True,  # Flag config as protected.
             description="The token to authenticate against the API service",
         ),
         th.Property(
-            "project_ids",
-            th.ArrayType(th.StringType),
-            required=True,
-            description="Project IDs to replicate",
-        ),
-        th.Property(
-            "start_date",
-            th.DateTimeType,
-            description="The earliest record date to sync",
-        ),
-        th.Property(
-            "api_url",
+            "token_secret",
             th.StringType,
-            default="https://api.mysample.com",
+            required=True,
+            secret=True,  # Flag config as protected.
+            description="The token secret to authenticate against the API service",
+        ),
+        th.Property(
+            "auth_url",
+            th.StringType,
+            default="https://api.absolute.com/jws/validate",
             description="The url for the API service",
+        ),
+        th.Property(
+            "endpoint",
+            th.StringType,
+            default="/v3/reporting",
+            description="The reporting endpoint for the set of streams",
         ),
     ).to_dict()
 
@@ -49,8 +48,8 @@ class TapAbsoluteSoftware(Tap):
             A list of discovered streams.
         """
         return [
-            streams.GroupsStream(self),
-            streams.UsersStream(self),
+            streams.DeviceStream(self),
+            streams.ApplicationStream(self),
         ]
 
 

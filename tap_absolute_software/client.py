@@ -2,48 +2,37 @@
 
 from __future__ import annotations
 
-import sys
-from pathlib import Path
-from typing import Any, Callable, Iterable
-
+import time
+import json
 import requests
-from singer_sdk.helpers.jsonpath import extract_jsonpath
+import logging
+from pathlib import Path
+from authlib.jose import JsonWebSignature
 from singer_sdk.streams import RESTStream
+from tap_absolute_software.paginator import AbsoluteSoftwarePaginator
 
-from tap_absolute_software.auth import AbsoluteSoftwareAuthenticator
-
-if sys.version_info >= (3, 8):
-    from functools import cached_property
-else:
-    from cached_property import cached_property
-
-_Auth = Callable[[requests.PreparedRequest], requests.PreparedRequest]
 SCHEMAS_DIR = Path(__file__).parent / Path("./schemas")
-
-
 class AbsoluteSoftwareStream(RESTStream):
     """AbsoluteSoftware stream class."""
 
-    # TODO: Set the API's base URL here:
-    url_base = "https://api.mysample.com"
+    next_page_token_jsonpath = '$.metadata.pagination.nextPage'
 
-    # OR use a dynamic url_base:
-    # @property
-    # def url_base(self) -> str:
-    #     """Return the API URL root, configurable via tap settings."""
-    #     return self.config["api_url"]
+    @property
+    def url_base(self) -> str:
+        """Return the API URL root, configurable via tap settings."""
+        return self.config.get('auth_url')
+    
+    def get_url(self, context: dict | None) -> str:
+        """Get stream entity URL.
 
-    records_jsonpath = "$[*]"  # Or override `parse_response`.
-    next_page_token_jsonpath = "$.next_page"  # Or override `get_next_page_token`.
-
-    @cached_property
-    def authenticator(self) -> _Auth:
-        """Return a new authenticator object.
+        Args:
+            context: Stream partition or context dictionary.
 
         Returns:
-            An authenticator instance.
+            A URL, optionally targeted to a specific partition or context.
         """
-        return AbsoluteSoftwareAuthenticator.create_for_stream(self)
+        url = self.url_base
+        return url
 
     @property
     def http_headers(self) -> dict:
@@ -52,101 +41,80 @@ class AbsoluteSoftwareStream(RESTStream):
         Returns:
             A dictionary of HTTP headers.
         """
-        headers = {}
+        headers = {
+            "alg": "HS256",
+            "kid": self.config.get("token_id"),
+            "method": "GET",
+            "content-type": "application/json",
+            "uri": self.config.get('endpoint') + self.path, # dynamically gets uri from stream
+            "issuedAt": str(round(time.time() * 1000))
+        }
+
         if "user_agent" in self.config:
             headers["User-Agent"] = self.config.get("user_agent")
+
         return headers
-
-    def get_next_page_token(
+    
+    def _request(
         self,
-        response: requests.Response,
-        previous_token: Any | None,
-    ) -> Any | None:
-        """Return a token for identifying next page or None if no more pages.
+        prepared_request: requests.PreparedRequest,
+        context: dict | None,
+    ) -> requests.Response:
 
-        Args:
-            response: The HTTP ``requests.Response`` object.
-            previous_token: The previous page token value.
+        # Creates prepared headers dictionary to dynamically pass the headers with the pagination token in it
 
-        Returns:
-            The next pagination token.
-        """
-        # TODO: If pagination is required, return a token which can be used to get the
-        #       next page. If this is the final page, return "None" to end the
-        #       pagination loop.
-        if self.next_page_token_jsonpath:
-            all_matches = extract_jsonpath(
-                self.next_page_token_jsonpath, response.json()
-            )
-            first_match = next(iter(all_matches), None)
-            next_page_token = first_match
-        else:
-            next_page_token = response.headers.get("X-Next-Page", None)
+        prepared_headers = json.loads(json.dumps(dict(prepared_request.headers)))
 
-        return next_page_token
+        # Signs the request with a Json Web Signature and posts the request
+        jws = JsonWebSignature()
+        signed = jws.serialize_compact(prepared_headers, json.dumps({}), self.config.get("token_secret"))
+        response = requests.post(self.url_base, signed,{"content-type": "text/plain"})
 
-    def get_url_params(
+        self._write_request_duration_log(
+            endpoint=self.path,
+            response=response,
+            context=context,
+            extra_tags={"url": prepared_request.path_url}
+            if self._LOG_REQUEST_METRIC_URLS
+            else None,
+        )
+        self.validate_response(response)
+        logging.debug("Response received successfully.")
+        return response
+
+    def prepare_request(
         self,
         context: dict | None,
-        next_page_token: Any | None,
-    ) -> dict[str, Any]:
-        """Return a dictionary of values to be used in URL parameterization.
+        next_page_token: _TToken | None,
+    ) -> requests.PreparedRequest:
+        """Prepare a request object for this stream.
 
         Args:
-            context: The stream context.
-            next_page_token: The next page index or value.
+            context: Stream partition or context dictionary.
+            next_page_token: Token, page number or any request argument to request the
+                next page of data.
 
         Returns:
-            A dictionary of URL query parameters.
+            Build a request with the stream's URL, path, query parameters,
+            HTTP headers and authenticator.
         """
-        params: dict = {}
+        http_method = self.rest_method
+        url: str = self.get_url(context)
+        params: dict | str = self.get_url_params(context, next_page_token)
+        request_data = self.prepare_request_payload(context, next_page_token)
+        headers = self.http_headers
+
+        # Adds next page token to the headers in the prepared request
         if next_page_token:
-            params["page"] = next_page_token
-        if self.replication_key:
-            params["sort"] = "asc"
-            params["order_by"] = self.replication_key
-        return params
+            headers["query-string"] = 'nextPage=' + next_page_token
 
-    def prepare_request_payload(
-        self,
-        context: dict | None,
-        next_page_token: Any | None,
-    ) -> dict | None:
-        """Prepare the data payload for the REST API request.
-
-        By default, no payload will be sent (return None).
-
-        Args:
-            context: The stream context.
-            next_page_token: The next page index or value.
-
-        Returns:
-            A dictionary with the JSON body for a POST requests.
-        """
-        # TODO: Delete this method if no payload is required. (Most REST APIs.)
-        return None
-
-    def parse_response(self, response: requests.Response) -> Iterable[dict]:
-        """Parse the response and return an iterator of result records.
-
-        Args:
-            response: The HTTP ``requests.Response`` object.
-
-        Yields:
-            Each record from the source.
-        """
-        # TODO: Parse response body and return a set of records.
-        yield from extract_jsonpath(self.records_jsonpath, input=response.json())
-
-    def post_process(self, row: dict, context: dict | None = None) -> dict | None:
-        """As needed, append or transform raw data to match expected structure.
-
-        Args:
-            row: An individual record from the stream.
-            context: The stream context.
-
-        Returns:
-            The updated record dictionary, or ``None`` to skip the record.
-        """
-        # TODO: Delete this method if not needed.
-        return row
+        return self.build_prepared_request(
+            method=http_method,
+            url=url,
+            params=params,
+            headers=headers,
+            json=request_data,
+        )
+    
+    def get_new_paginator(self) -> AbsoluteSoftwarePaginator:
+        return AbsoluteSoftwarePaginator(self.next_page_token_jsonpath)
