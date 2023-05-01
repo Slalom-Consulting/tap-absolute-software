@@ -256,7 +256,7 @@
                       "type": "string"
                     },
                     "transferRate": {
-                      "type": "integer"
+                      "type": "number"
                     },
                     "scsiTargetId": {
                       "type": "integer"
@@ -875,7 +875,7 @@
                                       "type": "string"
                                     },
                                     "extra": {
-                                      "type": "object"
+                                      "type": "array"
                                     }
                                   }
                                 }
@@ -5648,10 +5648,10 @@
                       "type": "object",
                       "properties": {
                         "x": {
-                          "type": "integer"
+                          "type": "number"
                         },
                         "y": {
-                          "type": "integer"
+                          "type": "number"
                         },
                         "type": {
                           "type": "string"
@@ -5660,7 +5660,7 @@
                           "type": "array",
                           "items": 
                             {
-                              "type": "integer"
+                              "type": "number"
                             }
                           
                         }
