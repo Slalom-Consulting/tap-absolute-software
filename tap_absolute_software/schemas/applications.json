@@ -1,91 +1,68 @@
 {
   "type": "object",
   "properties": {
-    "data": {
-      "type": "array",
-      "items": 
-        {
-          "type": "object",
-          "properties": {
-            "deviceAppId": {
-              "type": "string"
-            },
-            "deviceUid": {
-              "type": "string"
-            },
-            "accountUid": {
-              "type": "string"
-            },
-            "appId": {
-              "type": "string"
-            },
-            "appName": {
-              "type": "string"
-            },
-            "appOriginalName": {
-              "type": "string"
-            },
-            "appPublisher": {
-              "type": "string"
-            },
-            "appOriginalPublisher": {
-              "type": "string"
-            },
-            "appVersion": {
-              "type": "string"
-            },
-            "appOriginalVersion": {
-              "type": "string"
-            },
-            "esn": {
-              "type": "string"
-            },
-            "deviceName": {
-              "type": "string"
-            },
-            "deviceSerialNumber": {
-              "type": "string"
-            },
-            "userName": {
-              "type": "string"
-            },
-            "installPath": {
-              "type": "string"
-            },
-            "installDateTimeUtc": {
-              "type": "string"
-            },
-            "firstDetectDateTimeUtc": {
-              "type": "string"
-            },
-            "osName": {
-              "type": "string"
-            },
-            "lastScanDateTimeUtc": {
-              "type": "string"
-            },
-            "major": {
-              "type": "integer"
-            },
-            "minor": {
-              "type": "integer"
-            }
-          }
-        }
-      
+    "deviceAppId": {
+      "type": "string"
     },
-    "metadata": {
-      "type": "object",
-      "properties": {
-        "pagination": {
-          "type": "object",
-          "properties": {
-            "nextPage": {
-              "type": "string"
-            }
-          }
-        }
-      }
+    "deviceUid": {
+      "type": "string"
+    },
+    "accountUid": {
+      "type": "string"
+    },
+    "appId": {
+      "type": "string"
+    },
+    "appName": {
+      "type": "string"
+    },
+    "appOriginalName": {
+      "type": "string"
+    },
+    "appPublisher": {
+      "type": "string"
+    },
+    "appOriginalPublisher": {
+      "type": "string"
+    },
+    "appVersion": {
+      "type": "string"
+    },
+    "appOriginalVersion": {
+      "type": "string"
+    },
+    "esn": {
+      "type": "string"
+    },
+    "deviceName": {
+      "type": "string"
+    },
+    "deviceSerialNumber": {
+      "type": "string"
+    },
+    "userName": {
+      "type": "string"
+    },
+    "installPath": {
+      "type": "string"
+    },
+    "installDateTimeUtc": {
+      "type": "string"
+    },
+    "firstDetectDateTimeUtc": {
+      "type": "string"
+    },
+    "osName": {
+      "type": "string"
+    },
+    "lastScanDateTimeUtc": {
+      "type": "string"
+    },
+    "major": {
+      "type": "integer"
+    },
+    "minor": {
+      "type": "integer"
     }
   }
 }
