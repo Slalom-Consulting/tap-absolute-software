@@ -15,6 +15,7 @@ SCHEMAS_DIR = Path(__file__).parent / Path("./schemas")
 class AbsoluteSoftwareStream(RESTStream):
     """AbsoluteSoftware stream class."""
 
+    records_jsonpath = "$.data[*]"
     next_page_token_jsonpath = '$.metadata.pagination.nextPage'
 
     @property

@@ -182,19 +182,15 @@
     },
     "deviceFreezeReportingStatuses": {
       "type": "array",
-      "items": 
-        {
-          "type": "string"
-        }
-      
+      "items": {
+        "type": "string"
+      }
     },
     "deviceGroupIds": {
       "type": "array",
-      "items": 
-        {
-          "type": "string"
-        }
-      
+      "items": {
+        "type": "string"
+      }
     },
     "battery": {
       "type": "object",
@@ -227,49 +223,47 @@
     },
     "cdRoms": {
       "type": "array",
-      "items": 
-        {
-          "type": "object",
-          "properties": {
-            "id": {
-              "type": "string"
-            },
-            "name": {
-              "type": "string"
-            },
-            "drive": {
-              "type": "string"
-            },
-            "mediaType": {
-              "type": "string"
-            },
-            "description": {
-              "type": "string"
-            },
-            "status": {
-              "type": "string"
-            },
-            "transferRate": {
-              "type": "number"
-            },
-            "scsiTargetId": {
-              "type": "integer"
-            },
-            "pnpDeviceId": {
-              "type": "string"
-            },
-            "driver": {
-              "type": "string"
-            },
-            "mediaLoaded": {
-              "type": "boolean"
-            },
-            "manufacturer": {
-              "type": "string"
-            }
+      "items": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "name": {
+            "type": "string"
+          },
+          "drive": {
+            "type": "string"
+          },
+          "mediaType": {
+            "type": "string"
+          },
+          "description": {
+            "type": "string"
+          },
+          "status": {
+            "type": "string"
+          },
+          "transferRate": {
+            "type": "number"
+          },
+          "scsiTargetId": {
+            "type": "integer"
+          },
+          "pnpDeviceId": {
+            "type": "string"
+          },
+          "driver": {
+            "type": "string"
+          },
+          "mediaLoaded": {
+            "type": "boolean"
+          },
+          "manufacturer": {
+            "type": "string"
           }
         }
-      
+      }
     },
     "cpu": {
       "type": "object",
@@ -326,284 +320,274 @@
     },
     "disks": {
       "type": "array",
-      "items": 
-        {
-          "type": "object",
-          "properties": {
-            "id": {
-              "type": "string"
-            },
-            "name": {
-              "type": "string"
-            },
-            "bytesPerSector": {
-              "type": "integer"
-            },
-            "description": {
-              "type": "string"
-            },
-            "diskIndex": {
-              "type": "integer"
-            },
-            "firmwareRevision": {
-              "type": "string"
-            },
-            "manufacturer": {
-              "type": "string"
-            },
-            "mediaType": {
-              "type": "string"
-            },
-            "model": {
-              "type": "string"
-            },
-            "numberOfPartitions": {
-              "type": "integer"
-            },
-            "sectorsPerTrack": {
-              "type": "integer"
-            },
-            "serialNumber": {
-              "type": "string"
-            },
-            "sizeBytes": {
-              "type": "integer"
-            },
-            "status": {
-              "type": "string"
-            },
-            "totalCylinders": {
-              "type": "integer"
-            },
-            "totalHeads": {
-              "type": "integer"
-            },
-            "totalSectors": {
-              "type": "integer"
-            },
-            "totalTracks": {
-              "type": "integer"
-            },
-            "totalTracksPerCylinder": {
-              "type": "integer"
-            },
-            "fileSystem": {
-              "type": "string"
-            }
+      "items": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "name": {
+            "type": "string"
+          },
+          "bytesPerSector": {
+            "type": "integer"
+          },
+          "description": {
+            "type": "string"
+          },
+          "diskIndex": {
+            "type": "integer"
+          },
+          "firmwareRevision": {
+            "type": "string"
+          },
+          "manufacturer": {
+            "type": "string"
+          },
+          "mediaType": {
+            "type": "string"
+          },
+          "model": {
+            "type": "string"
+          },
+          "numberOfPartitions": {
+            "type": "integer"
+          },
+          "sectorsPerTrack": {
+            "type": "integer"
+          },
+          "serialNumber": {
+            "type": "string"
+          },
+          "sizeBytes": {
+            "type": "integer"
+          },
+          "status": {
+            "type": "string"
+          },
+          "totalCylinders": {
+            "type": "integer"
+          },
+          "totalHeads": {
+            "type": "integer"
+          },
+          "totalSectors": {
+            "type": "integer"
+          },
+          "totalTracks": {
+            "type": "integer"
+          },
+          "totalTracksPerCylinder": {
+            "type": "integer"
+          },
+          "fileSystem": {
+            "type": "string"
           }
         }
-      
+      }
     },
     "displays": {
       "type": "array",
-      "items": 
-        {
-          "type": "object",
-          "properties": {
-            "id": {
-              "type": "string"
-            },
-            "name": {
-              "type": "string"
-            },
-            "adapterDescription": {
-              "type": "string"
-            },
-            "adapterRAM": {
-              "type": "integer"
-            },
-            "adapterType": {
-              "type": "string"
-            },
-            "bitPerPixel": {
-              "type": "integer"
-            },
-            "depth": {
-              "type": "integer"
-            },
-            "driverVersion": {
-              "type": "string"
-            },
-            "height": {
-              "type": "integer"
-            },
-            "width": {
-              "type": "integer"
-            },
-            "manufacturer": {
-              "type": "string"
-            },
-            "model": {
-              "type": "string"
-            },
-            "numberOfColors": {
-              "type": "integer"
-            },
-            "refreshRate": {
-              "type": "integer"
-            },
-            "horizontalResolution": {
-              "type": "integer"
-            },
-            "verticalResolution": {
-              "type": "integer"
-            },
-            "resolution": {
-              "type": "string"
-            },
-            "pnpDeviceId": {
-              "type": "string"
-            }
+      "items": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "name": {
+            "type": "string"
+          },
+          "adapterDescription": {
+            "type": "string"
+          },
+          "adapterRAM": {
+            "type": "integer"
+          },
+          "adapterType": {
+            "type": "string"
+          },
+          "bitPerPixel": {
+            "type": "integer"
+          },
+          "depth": {
+            "type": "integer"
+          },
+          "driverVersion": {
+            "type": "string"
+          },
+          "height": {
+            "type": "integer"
+          },
+          "width": {
+            "type": "integer"
+          },
+          "manufacturer": {
+            "type": "string"
+          },
+          "model": {
+            "type": "string"
+          },
+          "numberOfColors": {
+            "type": "integer"
+          },
+          "refreshRate": {
+            "type": "integer"
+          },
+          "horizontalResolution": {
+            "type": "integer"
+          },
+          "verticalResolution": {
+            "type": "integer"
+          },
+          "resolution": {
+            "type": "string"
+          },
+          "pnpDeviceId": {
+            "type": "string"
           }
         }
-      
+      }
     },
     "keyboards": {
       "type": "array",
-      "items": 
-        {
-          "type": "object",
-          "properties": {
-            "id": {
-              "type": "string"
-            },
-            "name": {
-              "type": "string"
-            },
-            "description": {
-              "type": "string"
-            },
-            "layout": {
-              "type": "string"
-            },
-            "pnpDeviceId": {
-              "type": "string"
-            },
-            "numberOfFunctionKeys": {
-              "type": "integer"
-            },
-            "driver": {
-              "type": "string"
-            }
+      "items": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "name": {
+            "type": "string"
+          },
+          "description": {
+            "type": "string"
+          },
+          "layout": {
+            "type": "string"
+          },
+          "pnpDeviceId": {
+            "type": "string"
+          },
+          "numberOfFunctionKeys": {
+            "type": "integer"
+          },
+          "driver": {
+            "type": "string"
           }
         }
-      
+      }
     },
     "memories": {
       "type": "array",
-      "items": 
-        {
-          "type": "object",
-          "properties": {
-            "id": {
-              "type": "string"
-            },
-            "manufacturer": {
-              "type": "string"
-            },
-            "serialNumber": {
-              "type": "string"
-            },
-            "sizeBytes": {
-              "type": "integer"
-            },
-            "slot": {
-              "type": "string"
-            },
-            "speed": {
-              "type": "integer"
-            },
-            "typeDetail": {
-              "type": "integer"
-            },
-            "partNumber": {
-              "type": "string"
-            },
-            "type": {
-              "type": "string"
-            },
-            "status": {
-              "type": "string"
-            }
+      "items": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "manufacturer": {
+            "type": "string"
+          },
+          "serialNumber": {
+            "type": "string"
+          },
+          "sizeBytes": {
+            "type": "integer"
+          },
+          "slot": {
+            "type": "string"
+          },
+          "speed": {
+            "type": "integer"
+          },
+          "typeDetail": {
+            "type": "integer"
+          },
+          "partNumber": {
+            "type": "string"
+          },
+          "type": {
+            "type": "string"
+          },
+          "status": {
+            "type": "string"
           }
         }
-      
+      }
     },
     "networkAdapters": {
       "type": "array",
-      "items": 
-        {
-          "type": "object",
-          "properties": {
-            "id": {
-              "type": "string"
-            },
-            "name": {
-              "type": "string"
-            },
-            "adapterType": {
-              "type": "string"
-            },
-            "defaultGateway": {
-              "type": "string"
-            },
-            "dhcpEnabled": {
-              "type": "boolean"
-            },
-            "dhcpLeaseExpires": {
-              "type": "string"
-            },
-            "dhcpLeaseObtained": {
-              "type": "string"
-            },
-            "dhcpServer": {
-              "type": "string"
-            },
-            "ipV4Address": {
-              "type": "string"
-            },
-            "ipV6Address": {
-              "type": "string"
-            },
-            "ipSubnet": {
-              "type": "string"
-            },
-            "macAddress": {
-              "type": "string"
-            },
-            "manufacturer": {
-              "type": "string"
-            },
-            "productType": {
-              "type": "string"
-            },
-            "speed": {
-              "type": "integer"
-            },
-            "networkSSID": {
-              "type": "string"
-            },
-            "installed": {
-              "type": "boolean"
-            },
-            "serviceName": {
-              "type": "string"
-            },
-            "lastReset": {
-              "type": "string"
-            },
-            "dnsHostName": {
-              "type": "string"
-            },
-            "interfaceIndex": {
-              "type": "integer"
-            },
-            "pnpDeviceId": {
-              "type": "string"
-            }
+      "items": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "name": {
+            "type": "string"
+          },
+          "adapterType": {
+            "type": "string"
+          },
+          "defaultGateway": {
+            "type": "string"
+          },
+          "dhcpEnabled": {
+            "type": "boolean"
+          },
+          "dhcpLeaseExpires": {
+            "type": "string"
+          },
+          "dhcpLeaseObtained": {
+            "type": "string"
+          },
+          "dhcpServer": {
+            "type": "string"
+          },
+          "ipV4Address": {
+            "type": "string"
+          },
+          "ipV6Address": {
+            "type": "string"
+          },
+          "ipSubnet": {
+            "type": "string"
+          },
+          "macAddress": {
+            "type": "string"
+          },
+          "manufacturer": {
+            "type": "string"
+          },
+          "productType": {
+            "type": "string"
+          },
+          "speed": {
+            "type": "integer"
+          },
+          "networkSSID": {
+            "type": "string"
+          },
+          "installed": {
+            "type": "boolean"
+          },
+          "serviceName": {
+            "type": "string"
+          },
+          "lastReset": {
+            "type": "string"
+          },
+          "dnsHostName": {
+            "type": "string"
+          },
+          "interfaceIndex": {
+            "type": "integer"
+          },
+          "pnpDeviceId": {
+            "type": "string"
           }
         }
-      
+      }
     },
     "operatingSystem": {
       "type": "object",
@@ -672,214 +656,198 @@
     },
     "pointingDevices": {
       "type": "array",
-      "items": 
-        {
-          "type": "object",
-          "properties": {
-            "id": {
-              "type": "string"
-            },
-            "name": {
-              "type": "string"
-            },
-            "manufacturer": {
-              "type": "string"
-            },
-            "hardwareType": {
-              "type": "string"
-            },
-            "numberOfButtons": {
-              "type": "integer"
-            },
-            "status": {
-              "type": "string"
-            },
-            "pnpDeviceId": {
-              "type": "string"
-            },
-            "powerManagementSupported": {
-              "type": "boolean"
-            },
-            "doubleSpeedThreshold": {
-              "type": "integer"
-            },
-            "handedness": {
-              "type": "integer"
-            }
+      "items": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "name": {
+            "type": "string"
+          },
+          "manufacturer": {
+            "type": "string"
+          },
+          "hardwareType": {
+            "type": "string"
+          },
+          "numberOfButtons": {
+            "type": "integer"
+          },
+          "status": {
+            "type": "string"
+          },
+          "pnpDeviceId": {
+            "type": "string"
+          },
+          "powerManagementSupported": {
+            "type": "boolean"
+          },
+          "doubleSpeedThreshold": {
+            "type": "integer"
+          },
+          "handedness": {
+            "type": "integer"
           }
         }
-      
+      }
     },
     "printers": {
       "type": "array",
-      "items": 
-        {
-          "type": "object",
-          "properties": {
-            "id": {
-              "type": "string"
-            },
-            "name": {
-              "type": "string"
-            },
-            "driver": {
-              "type": "string"
-            },
-            "server": {
-              "type": "string"
-            },
-            "share": {
-              "type": "string"
-            },
-            "port": {
-              "type": "string"
-            }
+      "items": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "name": {
+            "type": "string"
+          },
+          "driver": {
+            "type": "string"
+          },
+          "server": {
+            "type": "string"
+          },
+          "share": {
+            "type": "string"
+          },
+          "port": {
+            "type": "string"
           }
         }
-      
+      }
     },
     "sounds": {
       "type": "array",
-      "items": 
-        {
-          "type": "object",
-          "properties": {
-            "id": {
-              "type": "string"
-            },
-            "name": {
-              "type": "string"
-            },
-            "manufacturer": {
-              "type": "string"
-            },
-            "status": {
-              "type": "string"
-            },
-            "pnpDeviceId": {
-              "type": "string"
-            },
-            "driver": {
-              "type": "string"
-            }
+      "items": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "name": {
+            "type": "string"
+          },
+          "manufacturer": {
+            "type": "string"
+          },
+          "status": {
+            "type": "string"
+          },
+          "pnpDeviceId": {
+            "type": "string"
+          },
+          "driver": {
+            "type": "string"
           }
         }
-      
+      }
     },
     "usbs": {
       "type": "array",
-      "items": 
-        {
-          "type": "object",
-          "properties": {
-            "id": {
-              "type": "string"
-            },
-            "name": {
-              "type": "string"
-            },
-            "pnpDeviceId": {
-              "type": "string"
-            },
-            "manufacturer": {
-              "type": "string"
-            }
+      "items": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "name": {
+            "type": "string"
+          },
+          "pnpDeviceId": {
+            "type": "string"
+          },
+          "manufacturer": {
+            "type": "string"
           }
         }
-      
+      }
     },
     "bluetoothAdapters": {
       "type": "array",
-      "items": 
-        {
-          "type": "object",
-          "properties": {
-            "id": {
-              "type": "string"
-            },
-            "description": {
-              "type": "string"
-            },
-            "isEnabled": {
-              "type": "boolean"
-            },
-            "address": {
-              "type": "string"
-            }
+      "items": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "description": {
+            "type": "string"
+          },
+          "isEnabled": {
+            "type": "boolean"
+          },
+          "address": {
+            "type": "string"
           }
         }
-      
+      }
     },
     "cameras": {
       "type": "array",
-      "items": 
-        {
-          "type": "object",
-          "properties": {
-            "id": {
-              "type": "string"
-            },
-            "name": {
-              "type": "string"
-            },
-            "model": {
-              "type": "string"
-            },
-            "description": {
-              "type": "string"
-            },
-            "isEnabled": {
-              "type": "boolean"
-            }
+      "items": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "name": {
+            "type": "string"
+          },
+          "model": {
+            "type": "string"
+          },
+          "description": {
+            "type": "string"
+          },
+          "isEnabled": {
+            "type": "boolean"
           }
         }
-      
+      }
     },
     "deviceFreezeActionStatus": {
       "type": "object",
       "properties": {
         "statuses": {
           "type": "array",
-          "items": 
-            {
-              "type": "object",
-              "properties": {
-                "type": {
-                  "type": "string"
-                },
-                "status": {
-                  "type": "object",
-                  "properties": {
-                    "passcode": {
-                      "type": "string"
-                    },
-                    "status": {
-                      "type": "string"
-                    },
-                    "updatedDateTimeUtc": {
-                      "type": "string"
-                    },
-                    "extras": {
-                      "type": "array",
-                      "items": 
-                        {
-                          "type": "object",
-                          "properties": {
-                            "key": {
-                              "type": "string"
-                            },
-                            "extra": {
-                              "type": "array"
-                            }
-                          }
+          "items": {
+            "type": "object",
+            "properties": {
+              "type": {
+                "type": "string"
+              },
+              "status": {
+                "type": "object",
+                "properties": {
+                  "passcode": {
+                    "type": "string"
+                  },
+                  "status": {
+                    "type": "string"
+                  },
+                  "updatedDateTimeUtc": {
+                    "type": "string"
+                  },
+                  "extras": {
+                    "type": "array",
+                    "items": {
+                      "type": "object",
+                      "properties": {
+                        "key": {
+                          "type": "string"
+                        },
+                        "extra": {
+                          "type": "array"
                         }
-                      
+                      }
                     }
                   }
                 }
               }
             }
-          
+          }
         },
         "score": {
           "type": "integer"
@@ -891,19 +859,17 @@
     },
     "customFields": {
       "type": "array",
-      "items": 
-        {
-          "type": "object",
-          "properties": {
-            "cdfUid": {
-              "type": "string"
-            },
-            "cdfFieldValue": {
-              "type": "string"
-            }
+      "items": {
+        "type": "object",
+        "properties": {
+          "cdfUid": {
+            "type": "string"
+          },
+          "cdfFieldValue": {
+            "type": "string"
           }
         }
-      
+      }
     },
     "rrCountSummary": {
       "type": "object",
@@ -965,25 +931,23 @@
     },
     "sccmHealthTests": {
       "type": "array",
-      "items": 
-        {
-          "type": "object",
-          "properties": {
-            "repairResult": {
-              "type": "string"
-            },
-            "testDescription": {
-              "type": "string"
-            },
-            "testResultDetails": {
-              "type": "string"
-            },
-            "testStatus": {
-              "type": "string"
-            }
+      "items": {
+        "type": "object",
+        "properties": {
+          "repairResult": {
+            "type": "string"
+          },
+          "testDescription": {
+            "type": "string"
+          },
+          "testResultDetails": {
+            "type": "string"
+          },
+          "testStatus": {
+            "type": "string"
           }
         }
-      
+      }
     },
     "chassisType": {
       "type": "string"
@@ -1133,92 +1097,88 @@
     },
     "volumes": {
       "type": "array",
-      "items": 
-        {
-          "type": "object",
-          "properties": {
-            "id": {
-              "type": "string"
-            },
-            "name": {
-              "type": "string"
-            },
-            "boot": {
-              "type": "boolean"
-            },
-            "compressed": {
-              "type": "boolean"
-            },
-            "driveLetter": {
-              "type": "string"
-            },
-            "fileSystem": {
-              "type": "string"
-            },
-            "freeSpaceBytes": {
-              "type": "integer"
-            },
-            "serialNumber": {
-              "type": "string"
-            },
-            "sizeBytes": {
-              "type": "integer"
-            },
-            "isPhysicalDisk": {
-              "type": "boolean"
-            },
-            "mountPoint": {
-              "type": "string"
-            }
+      "items": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "name": {
+            "type": "string"
+          },
+          "boot": {
+            "type": "boolean"
+          },
+          "compressed": {
+            "type": "boolean"
+          },
+          "driveLetter": {
+            "type": "string"
+          },
+          "fileSystem": {
+            "type": "string"
+          },
+          "freeSpaceBytes": {
+            "type": "integer"
+          },
+          "serialNumber": {
+            "type": "string"
+          },
+          "sizeBytes": {
+            "type": "integer"
+          },
+          "isPhysicalDisk": {
+            "type": "boolean"
+          },
+          "mountPoint": {
+            "type": "string"
           }
         }
-      
+      }
     },
     "cellularModems": {
       "type": "array",
-      "items": 
-        {
-          "type": "object",
-          "properties": {
-            "id": {
-              "type": "string"
-            },
-            "type": {
-              "type": "string"
-            },
-            "description": {
-              "type": "string"
-            },
-            "enabled": {
-              "type": "boolean"
-            },
-            "imei": {
-              "type": "string"
-            },
-            "imsi": {
-              "type": "string"
-            },
-            "simSerialNumber": {
-              "type": "string"
-            },
-            "currentNetworkName": {
-              "type": "string"
-            },
-            "currentNetworkNumericCode": {
-              "type": "integer"
-            },
-            "homeNetworkName": {
-              "type": "string"
-            },
-            "homeNetworkNumericCode": {
-              "type": "integer"
-            },
-            "phoneNumber": {
-              "type": "string"
-            }
+      "items": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "type": {
+            "type": "string"
+          },
+          "description": {
+            "type": "string"
+          },
+          "enabled": {
+            "type": "boolean"
+          },
+          "imei": {
+            "type": "string"
+          },
+          "imsi": {
+            "type": "string"
+          },
+          "simSerialNumber": {
+            "type": "string"
+          },
+          "currentNetworkName": {
+            "type": "string"
+          },
+          "currentNetworkNumericCode": {
+            "type": "integer"
+          },
+          "homeNetworkName": {
+            "type": "string"
+          },
+          "homeNetworkNumericCode": {
+            "type": "integer"
+          },
+          "phoneNumber": {
+            "type": "string"
           }
         }
-      
+      }
     },
     "hdcStatus": {
       "type": "object",
@@ -5652,11 +5612,9 @@
                 },
                 "coordinates": {
                   "type": "array",
-                  "items": 
-                    {
-                      "type": "number"
-                    }
-                  
+                  "items": {
+                    "type": "number"
+                  }
                 }
               }
             },
